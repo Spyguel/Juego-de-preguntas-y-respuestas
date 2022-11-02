@@ -8,6 +8,9 @@ contador = 3
 
 def window():
 
+    global score
+    score = 0
+
     def exit():
         exit = messagebox.askyesno('Salir', '¿Desea salir del programa?')
         if exit == True:
@@ -15,7 +18,7 @@ def window():
         else:
             True
     #*******************************************************************************
-    
+
     def beginning():
         beginning = messagebox.askyesno('Inicio', '¿Desea volver al Inicio?')
         if beginning == True:
@@ -29,13 +32,16 @@ def window():
     root = Tk()
     root.geometry("1180x550")
     root.title ("Juego - preguntas y respuestas")
-    root.iconbitmap("icono.ico")
+    #root.iconbitmap("icono.ico")
     root.resizable(0,0)
     root.configure(bg='#c0c0c0')
+    image = Image.open("start_windows.png")
+    image = image.resize((80,30), Image.ANTIALIAS)
+    image = ImageTk.PhotoImage(image)
     Frame(root, bg= '#000082', width= 1180, height= 50).pack(side=TOP)
     Frame(root, bg= '#000082', width= 1180, height= 50).pack(side=BOTTOM)
-    Button(root, text='Inicio', bg='#c3c3c3',activebackground='#909090', font='mssans, 11', command= lambda:beginning()).place(x=5, y=10, width=66)
-    Button(root, text='Salir', bg='#c3c3c3',activebackground='#909090', font='mssans, 11', command=lambda:exit()).place(x=1110, y=10, width=66)
+    Button(root, image= image, bg= '#000082',activebackground='#909090', padx=0, pady=0, font='mssans, 11', command= lambda:beginning()).place(x=5, y=8, width=80, height=29)
+    Button(root, text='Salir', bg='#c3c3c3',activebackground='#909090', font='mssans, 11', command=lambda:exit()).place(x=1096, y=10, width=80, height=29)
     bienvenida()
     root.mainloop()
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -47,7 +53,7 @@ def bienvenida():
             messagebox.showerror('Error', 'No ingresó ningún nombre')
         else:
             frame.destroy()
-            
+
             preg_1()
 
     frame = Frame(width= 1180, height= 450, bg='#c0c0c0')
@@ -63,7 +69,7 @@ def bienvenida():
 
     Label(frame, text='Ingresa tu nombre por favor',font='mssans, 14', bg='#c0c0c0').place(x=485, y=360)
     Entry(frame, textvariable= nombre).place(x=500, y= 400)
-    Button(frame, text='Continuar',font='mssans, 11',bg='#c3c3c3',activebackground='#909090', command=lambda:comprobar()).place(x= 630, y= 394)
+    Button(frame, text='Continuar',font='mssans, 11',bg='#c3c3c3',activebackground='#909090', command=lambda:comprobar()).place(x= 670, y= 398,width= 80, height= 29)
     frame.mainloop()
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -105,7 +111,7 @@ def preg_1():
     Button(frame, text= "seleccionar", command= lambda:respuesta(), background='#c3c3c3', activebackground='#909090', font='mssans, 12').place(x=1, y=250)
 
 def resp_1():
-    
+
     def delete():
         frame.destroy()
         preg_2()
@@ -127,7 +133,7 @@ def resp_1():
 # PREGUNTA 2 *******************************
 
 def preg_2():
-    
+
 
     def respuesta():
         if x.get() == 1:
@@ -157,7 +163,7 @@ def preg_2():
 
     Button(frame, text= "seleccionar", command= lambda:respuesta(), background='#c3c3c3', activebackground='#909090', font='mssans, 12').place(x=1, y=250)
 
-    
+
 def resp_2():
     global score
 
@@ -176,7 +182,7 @@ def resp_2():
     frame.mainloop()
 
 def preg_3():
-    
+
 
     def respuesta():
         if x.get() == 0:
@@ -205,7 +211,7 @@ def preg_3():
 
     Button(frame, text= "seleccionar", command= lambda:respuesta(), background='#c3c3c3', activebackground='#909090', font='mssans, 12').place(x=1, y=250)
 
-    
+
 def resp_3():
     global score
 
@@ -242,4 +248,5 @@ def scores():
 
 
 window()
+
 
