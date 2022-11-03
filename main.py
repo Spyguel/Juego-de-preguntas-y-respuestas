@@ -47,7 +47,7 @@ def window():
     Frame(root, bg= '#000082', width= 1180, height= 50).pack(side=BOTTOM)
     Button(root, image= image, bg= '#000082',activebackground='#909090', command= lambda:beginning()).place(x=5, y=8, width=80, height=29)
     Button(root, text='shut down', bg='#c3c3c3',activebackground='#909090', font='mssans, 11', command=lambda:exit()).place(x=1085, y=10, width=90, height=29)
-    preg_3()
+    bienvenida()
     root.mainloop()
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -224,7 +224,7 @@ def preg_3():
     image = Image.open("clippy.png")
     image = image.resize((120,120), Image.ANTIALIAS)
     image = ImageTk.PhotoImage(image)
-    Label(frame, image= image, bg='#c0c0c0').place(x=435, y= 50)
+    Label(frame, image= image, bg='#c0c0c0').place(x=450, y= 50)
 
 
     x = IntVar()
