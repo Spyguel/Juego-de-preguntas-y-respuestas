@@ -1,6 +1,7 @@
 from tkinter import Label, Button, Radiobutton, Frame, Tk, BOTTOM, TOP, StringVar, Entry, IntVar, LEFT
 from tkinter import messagebox
 from PIL import ImageTk, Image
+import time
 
 nombre = '' # Variable global para asignar el nombre
 score = 0
@@ -10,6 +11,8 @@ def window():
 
     global score
     score = 0
+    global contador
+    contador = 3
 
     def exit():
         exit = messagebox.askyesno('Salir', '¿Desea salir del programa?')
@@ -23,6 +26,7 @@ def window():
         beginning = messagebox.askyesno('Inicio', '¿Desea volver al Inicio?')
         if beginning == True:
             root.destroy()
+            time.sleep(0.8)
             window()
         else:
             True
@@ -38,11 +42,12 @@ def window():
     image = Image.open("start_windows.png")
     image = image.resize((80,30), Image.ANTIALIAS)
     image = ImageTk.PhotoImage(image)
+    
     Frame(root, bg= '#000082', width= 1180, height= 50).pack(side=TOP)
     Frame(root, bg= '#000082', width= 1180, height= 50).pack(side=BOTTOM)
-    Button(root, image= image, bg= '#000082',activebackground='#909090', padx=0, pady=0, font='mssans, 11', command= lambda:beginning()).place(x=5, y=8, width=80, height=29)
-    Button(root, text='Salir', bg='#c3c3c3',activebackground='#909090', font='mssans, 11', command=lambda:exit()).place(x=1096, y=10, width=80, height=29)
-    bienvenida()
+    Button(root, image= image, bg= '#000082',activebackground='#909090', command= lambda:beginning()).place(x=5, y=8, width=80, height=29)
+    Button(root, text='shut down', bg='#c3c3c3',activebackground='#909090', font='mssans, 11', command=lambda:exit()).place(x=1085, y=10, width=90, height=29)
+    preg_3()
     root.mainloop()
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -81,7 +86,7 @@ def bienvenida():
 def preg_1():
 
     def respuesta():
-        if x.get() == 0:
+        if x.get() == 3:
             scores()
             frame.destroy()
             resp_1()
@@ -102,13 +107,19 @@ def preg_1():
     opciones = ['A) MARK 1', ') Atari ST', 'C) Amstrad CPC', 'D) IMB 360']
 
     Label(frame, text= "¿Cuál fue el primer ordenador de circuitos integrados?", font='mssans, 14', bg='#c3c3c3' ).pack(side=TOP)
+    image = Image.open("clippy.png")
+    image = image.resize((120,120), Image.ANTIALIAS)
+    image = ImageTk.PhotoImage(image)
+    Label(frame, image= image, bg='#c0c0c0').place(x=435, y= 50)
 
     x = IntVar()
 
     for i in range(len(opciones)):
-        Radiobutton(frame, text= opciones[i], variable= x, value= i,indicatoron= 1, font='mssans, 12', bg='#c0c0c0', activebackground='#c0c0c0').pack(side=LEFT, pady=150, padx=60)
+        Radiobutton(frame, text= opciones[i], variable= x, value= i,indicatoron= 1, font='mssans, 13', bg='#c0c0c0', activebackground='#c0c0c0').pack(side=LEFT, pady=150, padx=60)
 
-    Button(frame, text= "seleccionar", command= lambda:respuesta(), background='#c3c3c3', activebackground='#909090', font='mssans, 12').place(x=1, y=250)
+    Button(frame, text= "seleccionar", command= lambda:respuesta(), background='#c3c3c3', activebackground='#909090', font='mssans, 12').place(x=435, y=310)
+    
+    frame.mainloop()
 
 def resp_1():
 
@@ -156,13 +167,19 @@ def preg_2():
 
     Label(frame, text= "¿En qué año fue lanzado el primer microprocesador?", font='mssans, 14', bg='#c3c3c3' ).pack(side=TOP)
 
+    image = Image.open("clippy.png")
+    image = image.resize((120,120), Image.ANTIALIAS)
+    image = ImageTk.PhotoImage(image)
+    Label(frame, image= image, bg='#c0c0c0').place(x=390, y= 50)
+
     x = IntVar()
 
     for i in range(len(opciones)):
-        Radiobutton(frame, text= opciones[i], variable= x, value= i,indicatoron= 1, font='mssans, 12', bg='#c0c0c0', activebackground='#c0c0c0').pack(side=LEFT, pady=150, padx=60)
+        Radiobutton(frame, text= opciones[i], variable= x, value= i,indicatoron= 1, font='mssans, 13', bg='#c0c0c0', activebackground='#c0c0c0').pack(side=LEFT, pady=150, padx=60)
 
-    Button(frame, text= "seleccionar", command= lambda:respuesta(), background='#c3c3c3', activebackground='#909090', font='mssans, 12').place(x=1, y=250)
-
+    Button(frame, text= "seleccionar", command= lambda:respuesta(), background='#c3c3c3', activebackground='#909090', font='mssans, 12').place(x=390, y=310)
+    
+    frame.mainloop()
 
 def resp_2():
     global score
@@ -204,13 +221,20 @@ def preg_3():
 
     Label(frame, text= "¿Cuál fue el primer ordenador comercial?", font='mssans, 14', bg='#c3c3c3' ).pack(side=TOP)
 
+    image = Image.open("clippy.png")
+    image = image.resize((120,120), Image.ANTIALIAS)
+    image = ImageTk.PhotoImage(image)
+    Label(frame, image= image, bg='#c0c0c0').place(x=435, y= 50)
+
+
     x = IntVar()
 
     for i in range(len(opciones)):
-        Radiobutton(frame, text= opciones[i], variable= x, value= i,indicatoron= 1, font='mssans, 12', bg='#c0c0c0', activebackground='#c0c0c0').pack(side=LEFT, pady=150, padx=60)
+        Radiobutton(frame, text= opciones[i], variable= x, value= i,indicatoron= 1, font='mssans, 13', bg='#c0c0c0', activebackground='#c0c0c0').pack(side=LEFT, pady=150, padx=60)
 
-    Button(frame, text= "seleccionar", command= lambda:respuesta(), background='#c3c3c3', activebackground='#909090', font='mssans, 12').place(x=1, y=250)
+    Button(frame, text= "seleccionar", command= lambda:respuesta(), background='#c3c3c3', activebackground='#909090', font='mssans, 12').place(x=435, y=310)
 
+    frame.mainloop()
 
 def resp_3():
     global score
